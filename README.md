@@ -1,75 +1,59 @@
-# React + TypeScript + Vite
+# LangChain: Universal Summarizer App - YT or Website Summary
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)]()
+[![Maintainer](https://img.shields.io/static/v1?label=Ilya%20Devder&message=Maintainer&color=red)](mailto:ilya.devder@extrawest.com)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)]()
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![GitHub release](https://img.shields.io/badge/release-v1.0.0-blue)
 
-Currently, two official plugins are available:
+An AI-powered summarizer application built with React 19, TypeScript, Vite, and Bun. The app uses LangChain and Groq to enable structured text summarization of YouTube videos and websites, providing high-quality summaries (including dynamic catching headers and detailed descriptions) through serverless backend functions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. API Request Example:
 
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+curl -X POST http://localhost:3000/api/scrape/website \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://example.com"}'
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Output:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```json
+{
+  "text": "Example Domain This domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission. More information..."
+}
 ```
+
+## Key Features
+
+- **YouTube Transcript Extraction**: Integrates with Supadata to fetch transcriptions from YouTube video URLs.
+- **Cheerio-Powered Website Scraping**: Fetches and cleans target website body contents in real-time, removing scripts, stylesheets, and irrelevant tags.
+- **AI-Powered Summarization**: Employs LangChain and Groq API with structured JSON output schemas to generate clean, readable summaries.
+- **Vercel Serverless Functions**: Fully integrated serverless backend functions (`/api/scrape/youtube` and `/api/scrape/website`) for zero-ops, scalable deployment.
+- **Modern Responsive Design**: Built with Tailwind CSS and DaisyUI, providing a clean and intuitive user experience.
+
+## Tech Stack
+
+- **React 19**
+- **Vite 8**: Next-generation frontend tooling.
+- **TailwindCSS 4 / DaisyUI 5**: Dynamic utility-first CSS styling and UI components.
+- **LangChain**: AI orchestration tool to manage LLM workflows and structured output.
+- **Groq Llama**: Provides fast inference models for structured summarization.
+- **Cheerio**: Lightweight HTML parsing on the serverless backend.
+- **Supadata**: Transcription loader service for YouTube video URLs.
+
+## Running On Local Machine:
+
+1. Set up the following environment variables (e.g. in your `.env` file):
+   - `SUPADATA_API_KEY=your_supadata_api_key`
+2. Run the command to start the frontend and local serverless endpoints:
+   ```bash
+   bun run dev
+   ```
+3. Open the following link in your browser: `http://localhost:3000` (or the port specified by Vercel CLI).
+
+## Contributing
+
+Feel free to open issues or submit pull requests to improve the project. Contributions are welcome!
+
+Developed by [extrawest](https://extrawest.com/). Software development company

@@ -6,7 +6,7 @@ export const isYoutubeLink = (url: string) => {
 };
 
 export const scrapWebsiteData = async (url: string): Promise<string> => {
-  const response = await fetch("http://localhost:3001/api/scrape/website", {
+  const response = await fetch("/api/scrape/website", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export const scrapWebsiteData = async (url: string): Promise<string> => {
 };
 
 export const scrapYoutubeData = async (url: string): Promise<string> => {
-  const response = await fetch("http://localhost:3001/api/scrape/youtube", {
+  const response = await fetch("/api/scrape/youtube", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

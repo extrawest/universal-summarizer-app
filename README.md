@@ -8,6 +8,12 @@
 
 An AI-powered summarizer application built with React 19, TypeScript, Vite, and Bun. The app uses LangChain and Groq to enable structured text summarization of YouTube videos and websites, providing high-quality summaries (including dynamic catching headers and detailed descriptions) through serverless backend functions.
 
+## Video demonstration
+
+
+https://github.com/user-attachments/assets/e4bbe162-b0c6-4415-9782-87bdcff096d0
+
+
 1. API Request Example:
 
 ```bash
